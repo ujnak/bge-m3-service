@@ -129,9 +129,9 @@ def lexical_to_sparse_format_fixed(lexical_weights: List[Dict]):
             continue
         
         try:
-            # Sort by weight (descending order)
+            # Sort by index position (ascending order) instead of weight
             paired_data = list(zip(mapped_tokens, mapped_weights))
-            paired_data.sort(key=lambda x: x[1], reverse=True)
+            paired_data.sort(key=lambda x: x[0])  # Sort by index (x[0]) instead of weight (x[1])
             
             sorted_positions, sorted_weights = zip(*paired_data) if paired_data else ([], [])
             
